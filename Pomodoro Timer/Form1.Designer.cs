@@ -29,11 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.lblTime = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtTask = new System.Windows.Forms.TextBox();
             this.btnStart = new System.Windows.Forms.Button();
             this.timerPomodoro = new System.Windows.Forms.Timer(this.components);
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.SuspendLayout();
             // 
             // lblTime
@@ -78,6 +80,15 @@
             this.timerPomodoro.Interval = 1000;
             this.timerPomodoro.Tick += new System.EventHandler(this.timerPomodoro_Tick);
             // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.notifyIcon1.BalloonTipText = "Pomodoro running on brackground.";
+            this.notifyIcon1.BalloonTipTitle = "Pomodoro Timer";
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "Pomodoro Timer";
+            this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -88,9 +99,11 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblTime);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Pomodoro Timer";
+            this.Resize += new System.EventHandler(this.Form1_Resize);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -103,6 +116,7 @@
         private System.Windows.Forms.TextBox txtTask;
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Timer timerPomodoro;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }
 

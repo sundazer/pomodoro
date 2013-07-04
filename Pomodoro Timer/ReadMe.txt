@@ -1,4 +1,5 @@
 ﻿Yet another Pomodoro timer
+With Visual C# 2010 Express
 ---
 Description
 -
@@ -11,12 +12,13 @@ Features
 -
 Pomodoro functionality.
 Updates window title text.
+Minimizing to tray.
+Alerts.
 
 Todo
 -
 Logging tasks.
 Displaying logs.
 Visualizing completed tasks.
-Minimizing to tray.
 Popup messages.
-Alerts
+Settings for time, sound etc.

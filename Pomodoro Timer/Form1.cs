@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Pomodoro_Timer.Properties;
 
 namespace Pomodoro_Timer
 {
@@ -14,6 +15,7 @@ namespace Pomodoro_Timer
         public TimeSpan time { get; set; }
         public int breakCount { get; set; }
         private Boolean breakFlag = false;
+        System.Media.SoundPlayer alarm = new System.Media.SoundPlayer(Resources.DingLing);
 
         public Form1()
         {
@@ -79,6 +81,10 @@ namespace Pomodoro_Timer
             return time.Minutes.ToString() + ":" + time.Seconds.ToString("D2");
         }
 
+        /// <summary>
+        /// Updates the timer value to the label and title.
+        /// Handles the event of timer reaching zero.
+        /// </summary>
         private void updateTime()
         {
             lblTime.Text = pomodoroTime(time);
@@ -91,6 +97,7 @@ namespace Pomodoro_Timer
             
             if( time.Equals(TimeSpan.Zero) )
             {
+                alarm.Play();
                 timerPomodoro.Stop();
                 btnStart.Enabled = true;
                 if (breakFlag == true)
@@ -106,6 +113,26 @@ namespace Pomodoro_Timer
                     breakFlag = true;
                 }
             }
+        }
+
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Minimized)
+            {
+                notifyIcon1.Visible = true;
+                notifyIcon1.ShowBalloonTip(500);
+                this.Hide();
+            }
+            else if (this.WindowState == FormWindowState.Normal)
+            {
+                notifyIcon1.Visible = false;
+            }
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            this.Show();
+            this.WindowState = FormWindowState.Normal;
         }
     }
 }
