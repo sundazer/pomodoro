@@ -13,6 +13,7 @@ Features
 Pomodoro functionality.
 Updates window title text.
 Minimizing to tray.
+Popup messages.
 Alerts.
 
 Todo
@@ -20,5 +21,4 @@ Todo
 Logging tasks.
 Displaying logs.
 Visualizing completed tasks.
-Popup messages.
 Settings for time, sound etc.

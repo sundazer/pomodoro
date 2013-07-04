@@ -106,12 +106,20 @@ namespace Pomodoro_Timer
                     txtTask.Text = "";
                     btnStart.Text = "Start";
                     breakFlag = false;
+                    this.Text = "** Start your Pomodoro **";
                 }
                 else
                 {
                     btnStart.Text = "Start break";
                     breakFlag = true;
+                    this.Text = "** End of break **";
                 }
+                if (this.WindowState == FormWindowState.Minimized)
+                {
+                    notifyIcon1.BalloonTipText = "Time is up!";
+                    notifyIcon1.ShowBalloonTip(200);
+                }
+
             }
         }
 
@@ -120,7 +128,7 @@ namespace Pomodoro_Timer
             if (this.WindowState == FormWindowState.Minimized)
             {
                 notifyIcon1.Visible = true;
-                notifyIcon1.ShowBalloonTip(500);
+                notifyIcon1.ShowBalloonTip(200);
                 this.Hide();
             }
             else if (this.WindowState == FormWindowState.Normal)
