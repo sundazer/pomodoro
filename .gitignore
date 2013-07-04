@@ -1,1 +1,3 @@
 *.cache
+Pomodoro Timer/bin/*
+Pomodoro Timer/obj/*
